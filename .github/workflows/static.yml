@@ -27,11 +27,14 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      
     runs-on: ubuntu-latest
     steps:
       - name: Expose API_KEY
         env: 
           API_KEY: ${{ secrets.API_KEY_UNSPLASH }}
+        run: |
+          echo KEY: '${secrets.API_KEY_UNSPLASH}'
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
