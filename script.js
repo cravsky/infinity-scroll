@@ -6,11 +6,14 @@ let imagesLoaded = 0;
 let totalImages = 0;
 let photosArray = [];
 
-// Unsplash API
-const count = 3;
-const apiKey = 'nVCPp2bosPtaXsv8fhMSsGqiMbuBfPfSESvMRch-O28';
-const apiUrl = `https://api.unsplash.com/photos/random?
-client_id=${apiKey}&count=${count}`;
+let apiUrl = '';
+if (location.hostname === 'localhost'
+    || location.hostname === ''
+    || location.hostname === '127.0.0.1') {
+    apiUrl = 'http://localhost:5000/api'
+} else {
+    apiUrl = 'https://infinity-scroll.up.railway.app/api'
+}
 
 // Check if all images were loaded
 function imageLoaded() {
